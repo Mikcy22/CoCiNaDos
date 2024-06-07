@@ -62,7 +62,19 @@ class User {
 
    
     
+    public function BorrarRecetas($id){
+        try {
+            $stm = $this->pdo->prepare("DELETE FROM `cocinados`.`recipes` WHERE (`id` = '$id');");
+            $stm->execute();
+            $stm2 = $this->pdo->prepare("DELETE FROM `cocinados`.`pasos` WHERE (`receta_id` = '$id');");
+            $stm2->execute();
+            $stm3 = $this->pdo->prepare("DELETE FROM `cocinados`.`ingredientes` WHERE (`receta_id` = '$id');");
+            $stm3->execute();
 
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
 
 

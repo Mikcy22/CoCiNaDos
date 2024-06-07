@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 mt-5">
         <?php foreach($this->model->ListarRamdon(3) as $r): ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">

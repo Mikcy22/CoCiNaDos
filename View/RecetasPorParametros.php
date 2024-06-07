@@ -51,7 +51,7 @@ switch ($i) {
             <p class="text-primary text-uppercase mb-2">// <?php echo $i; ?></p>
             <h1 class="display-6 mb-4">Disfruta de nuestras magníficas recetas variadas.</h1>
         </div>
-        <div class="row g-4">
+        <div class="row g-4 ">
             <?php foreach ($this->model->getRecetasByParams($param1, $param2) as $r): ?>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-400 w-500">

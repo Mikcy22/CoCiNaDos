@@ -82,6 +82,24 @@ class UserController {
     }
 
     
+    public function BorrarRecetas() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            //echo $id;
+            $user = $this->user->BorrarRecetas($id);
+            header('Location: index.php?c=User&a=adminPanel');
+
+        }
+       
+       
+    }
+
+
+
+
+
+
+
 }
     
 
