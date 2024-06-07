@@ -199,37 +199,22 @@
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
             <h3>Enim quis est voluptatibus aliquid consequatur</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
-            <div class="row">
-                <div class="col-lg-6 icon-box d-flex">
-                    <i class="bi bi-easel flex-shrink-0"></i>
-                    <div>
-                        <h4>Lorem Ipsum</h4>
-                        <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias</p>
-                    </div>
-                </div><!-- End Icon Box -->
-                <div class="col-lg-6 icon-box d-flex">
-                    <i class="bi bi-patch-check flex-shrink-0"></i>
-                    <div>
-                        <h4>nemo-enim</h4>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiise</p>
-                    </div>
-                </div><!-- End Icon Box -->
-                <div class="col-lg-6 icon-box d-flex">
-                    <i class="bi bi-brightness-high flex-shrink-0"></i>
-                    <div>
-                        <h4>Almohadilla para cenar</h4>
-                        <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit</p>
-                    </div>
-                </div><!-- End Icon Box -->
-                <div class="col-lg-6 icon-box d-flex">
-                    <i class="bi bi-brightness-high flex-shrink-0"></i>
-                    <div>
-                        <h4>clov tride</h4>
-                        <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit</p>
-                    </div>
-                </div><!-- End Icon Box -->
-            </div>
+            <form action="your_form_submission_url" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
         </div>
     </div>
-    </div>
+</div>
+
