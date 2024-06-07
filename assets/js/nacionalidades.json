@@ -1,0 +1,37 @@
+{
+    "Nationalities": [
+        
+        {
+            "name": "Italiana",
+            "value": "Italiana"
+        },
+        {
+            "name": "Mexicana",
+            "value": "Mexicana"
+        },
+        {
+            "name": "Española",
+            "value": "Española"
+        },
+        {
+            "name": "Marroquí",
+            "value": "Marroquí"
+        },
+        {
+            "name": "Francesa",
+            "value": "Francesa"
+        },
+        {
+            "name": "China",
+            "value": "Otros"
+        },
+        {
+            "name": "Inglesa",
+            "value": "Otros"
+        }
+
+    ]
+    
+}
+
+
