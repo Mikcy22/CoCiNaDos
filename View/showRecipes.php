@@ -21,6 +21,7 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>User</th>
                 <th>Borrar</th>
                 <!-- Agrega más columnas según los campos de tus recetas -->
             </tr>
@@ -31,6 +32,7 @@
             <td><?php echo $recipe->id; ?></td>
             <td><?php echo $recipe->name; ?></td>
             <td><?php echo $recipe->description; ?></td>
+            <td><?php echo $recipe->username; ?></td>
             <td>
                 
             <form method="post" action="index.php?c=User&a=BorrarRecetas&id=<?php echo $recipe->id; ?>">

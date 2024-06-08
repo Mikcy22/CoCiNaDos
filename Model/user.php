@@ -54,7 +54,7 @@ class User {
 
     public function TotaRecetas(){
         try {
-            $stm = $this->pdo->prepare("SELECT name, description,id FROM recipes;");
+            $stm = $this->pdo->prepare("SELECT name, description,id,username FROM recipes;");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
