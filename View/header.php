@@ -124,7 +124,7 @@ start_session();
             <div class="nav-item dropdown" id="userMenu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person fs-4"> </i>' .$_SESSION['username'] .'</a>
               <div class="dropdown-menu m-0">
-                <a class="dropdown-item" href="pages/perfil.php"><i class="bi bi-person"> </i>Perfil</a>
+                <a class="dropdown-item" href="index.php?c=User&a=showUpdateForm"><i class="bi bi-person"> </i>Perfil</a>
                 <a class="dropdown-item" href="index.php?c=User&a=showUserRecipes"><i class="bi bi-bookmark-heart"></i>Tus recetas</a>
                 <a class="dropdown-item" href="index.php?c=User&a=logout"><i class="bi bi-door-closed"></i>Logut</a>              
               ';
