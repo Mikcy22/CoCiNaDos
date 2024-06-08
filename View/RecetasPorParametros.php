@@ -23,7 +23,7 @@ switch ($i) {
 
 
 <!-- Aquí incluyes el HTML y PHP necesario para mostrar las recetas según parámetros -->
-<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid page-header py-6 " >
     <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3"><?php echo $_GET["param2"]; ?></h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -39,21 +39,21 @@ switch ($i) {
 
 <div class="container-xxl bg-light my-6 py-6 pt-0">
     <div class="container">
-        <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0 wow fadeInUp d-flex align-items-center justify-content-center"
-            data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <div class="bg-primary text-light rounded-bottom p-5 my-6 mt-0  d-flex align-items-center justify-content-center"
+             style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <div class="row g-4 align-items-center">
                 <div class="col-lg-12">
                     <h1 class="display-4 text-light mb-0 text-center">Recetas de hoy</h1>
                 </div>
             </div>
         </div>
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+        <div class="text-center mx-auto mb-5 "  style="max-width: 500px;">
             <p class="text-primary text-uppercase mb-2">// <?php echo $i; ?></p>
             <h1 class="display-6 mb-4">Disfruta de nuestras magníficas recetas variadas.</h1>
         </div>
         <div class="row g-4 ">
             <?php foreach ($this->model->getRecetasByParams($param1, $param2) as $r): ?>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 " >
                     <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-400 w-500">
                         <div class="text-center p-4">
                             <h3 class="mb-3"><?= $r->name; ?></h3>

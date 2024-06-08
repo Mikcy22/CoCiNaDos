@@ -1,6 +1,6 @@
 <!-- Footer Start -->
     <footer>
-    <div class="container-fluid bg-dark text-light footer mt-6" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light footer mt-6" >
         <div class="container py-5">
             <div class="row g-5">
     

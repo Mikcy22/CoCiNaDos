@@ -16,7 +16,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                             <div class="row justify-content-start">
                                 <div class="col-lg-11 col-sm-11">
                                     <h1 class="display-1 text-light mb-4 ">Cocinados, el mejor recetario</h1>
-                                    <p class="text-light mb-4 pb-3">Recetario de la mejor comida y gastronomía de
+                                    <p class="text-light mb-4 pb-3" id="textoSlider">Recetario de la mejor comida y gastronomía de
                                         cualquier parte del mundo.</p>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
         <div class="container">
             <div class="row g-2">
 
-                <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="col-lg-4 col-md-6 " >
                     <div class="fact-item bg-light rounded text-center h-100 p-5">
                         <i class="fa fa-pizza-slice fa-4x text-primary mb-4"></i>
                         <p class="mb-2">Recetas totales</p>
@@ -166,7 +166,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="col-lg-4 col-md-6 " >
                     <div class="fact-item bg-light rounded text-center h-100 p-5">
                         <i class="fa fa-solid fa-map fa-4x text-primary mb-4"></i>
                         <p class="mb-2">Paises totales</p>
@@ -175,7 +175,7 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="col-lg-4 col-md-6 " >
                     <div class="fact-item bg-light rounded text-center h-100 p-5">
                         <i class="fa fa-solid fa-user fa-4x text-primary mb-4"></i>
                         <p class="mb-2">Recetas de usuarios</p>

@@ -19,9 +19,7 @@
     --bs-info: #0dcaf0;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
-    --bs-light: #f8f9fa;
-
-    
+    --bs-light: #f8f9fa;    
 }
 .candal-regular {
     font-family: "Candal", sans-serif;
@@ -2528,8 +2526,7 @@ textarea.form-control-lg {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact
+
 }
 
 .form-check-input[type=checkbox] {
@@ -4382,10 +4379,7 @@ fieldset:disabled .btn {
     }
 }
 
-.nav-link:focus,
-.nav-link:hover {
-    color: #0a58ca
-}
+
 
 .nav-link.disabled {
     color: #6c757d;
@@ -8295,7 +8289,7 @@ fieldset:disabled .btn {
 }
 
 .bg-dark {
-    background-color: #212529 
+    background-color: black  
 }
 
 .bg-body {
@@ -11814,21 +11808,28 @@ h6,
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
-    font-family: "Candal", sans-serif;
+   
     font-weight: 900;
     vertical-align: middle;
     margin-left: 8px;
 }
 
 .navbar .navbar-nav .nav-link {
+    
     padding: 35px 15px;
     color: var(--light);
     outline: none;
+    font-size: 18px;
 }
+.navbar .navbar-nav .nav-link :hover{ 
+  color: black !important;
+  
 
+}
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: black  !important;
+    background-color: rgba(255, 255, 255, .13) !important;
 }
 
 .navbar.fixed-top {
@@ -11844,6 +11845,7 @@ h6,
 
     .navbar .navbar-nav .nav-link {
         padding: 10px 0;
+        
     }
 }
 
@@ -12191,4 +12193,43 @@ h6,
 
 a.nav-link.dropdown-toggle {
     color: white ;
+}
+.card-equal-height {
+    height: 100%;
+}
+.custom-card {
+    width: 150px;
+    height: 140px;
+    margin: auto;
+}
+.custom-number {
+    font-size: 25px;
+}
+.custom-text {
+    font-size: 25px;
+}
+ p.card-text {
+    font-size: 18px;
+}
+
+.responsive-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 25px;
+    line-height: 1;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.nombreR{
+    font-size: 3.5rem;
+}
+div#userMenu {
+    margin-top: -5px;
+}
+
+
+p#textoSlider {
+    font-size: 25px;
 }

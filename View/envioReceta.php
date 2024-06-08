@@ -16,7 +16,7 @@ $array_data = json_decode($json_data, true);
 
 
 
-<div class="container-fluid page-header py-6 wow fadeIn">
+<div class="container-fluid page-header py-6 ">
     <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3">Envia tu receta y disfrutala con los demas</h1>
         <nav aria-label="breadcrumb animated slideInDown">

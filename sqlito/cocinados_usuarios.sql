@@ -31,7 +31,8 @@ CREATE TABLE `usuarios` (
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `correo_electronico` (`correo_electronico`)
+  UNIQUE KEY `correo_electronico` (`correo_electronico`),
+  permisos BOOLEAN DEFAULT 0
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

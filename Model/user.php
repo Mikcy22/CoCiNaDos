@@ -32,6 +32,7 @@ class User {
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->bindParam(':contrasena', $passwordHash);
         return $stmt->execute();
+
     }
 
 
@@ -42,7 +43,9 @@ class User {
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && password_verify($contrasena, $user['contrasena'])) {
-            return $user;
+            start_session();
+                $_SESSION['username'] = $user['username'];
+                header('Location: index.php?');
         }
         return false;
     }
@@ -75,6 +78,19 @@ class User {
             die($e->getMessage());
         }
     }
+
+    public function MostrarRecetasUser($username) {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM `cocinados`.`recipes` WHERE `username` = :username");
+            $stm->bindParam(':username', $username);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
 
 
 

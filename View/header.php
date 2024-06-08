@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'helpers/session_helper.php';
+start_session();
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ session_start();
   
   
   <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 " >
     <a href="index.php" class="navbar-brand ms-4 ms-lg-0">
       <!--<h1 class="text-light m-0">CoCiNaDoS</h1>-->
       <img src="assets/img/logo.svg" class="w-75" >
@@ -110,58 +111,47 @@ session_start();
             <a class="dropdown-item" href="index.php?c=TodasRecetas&a=obtenerRecetasPorParametros&param1=metodo_elaboracion&amp;param2=Otros">Otros</a>
           </div>
         </div>
-        <?php
-      
-      if (isset($_SESSION['username'])) {
-        echo '<a href="index.php?c=Formulario&a=mostrarFormulario" class="nav-link">Envia tu receta</a>';
-      }
-       ?>
+       
         
 
-      </div>
+        <?php 
+          
+          if (isset($_SESSION['username'])) {
+            echo '
+            
+            <a href="index.php?c=Formulario&a=mostrarFormulario" class="nav-link">Envia tu receta</a>
+            
+            <div class="nav-item dropdown" id="userMenu">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person fs-4"> </i>' .$_SESSION['username'] .'</a>
+              <div class="dropdown-menu m-0">
+                <a class="dropdown-item" href="pages/perfil.php"><i class="bi bi-person"> </i>Perfil</a>
+                <a class="dropdown-item" href="index.php?c=User&a=showUserRecipes"><i class="bi bi-bookmark-heart"></i>Tus recetas</a>
+                <a class="dropdown-item" href="index.php?c=User&a=logout"><i class="bi bi-door-closed"></i>Logut</a>              
+              ';
+              if($_SESSION['username'] === "admin"){
+                echo '<a class="dropdown-item" href="index.php?c=User&a=adminPanel"><i class="bi bi-wrench-adjustable"></i>Panel admin</a>';
+              }
+              
+             echo '</div></div>';
 
-    </div>
-    <!-- USER -->
-
-    <?php
-      
-    if (isset($_SESSION['username'])){
-     
-      	
-      
-
-     ?>
-
-
-      <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <?php echo $_SESSION['username'] ?> <i class="bi bi-person fs-2"> </i></a>
-        <div class="dropdown-menu mr-5">
-          <a class="dropdown-item" href="pages/perfil.php"><i class="bi bi-person"> </i>Perfil</a>
-          <a class="dropdown-item" href=""><i class="bi bi-bookmark-heart"></i>Tus recetas</a>
-          <a class="dropdown-item" href="index.php?c=User&a=logout"><i class="bi bi-door-closed"></i>Logut</a>
-        
-        <?php
-          If($_SESSION['username'] === "admin"){
-            echo '<a class="dropdown-item" href="index.php?c=User&a=adminPanel"><i class="bi bi-wrench-adjustable"></i>Panel admin</a>';
+             
           }
-        ?>
-        
-        
-        </div>
+          else{
+            echo '
+            
+           <a href="index.php?c=User&a=actionLogin" class="nav-link text-white">Registrate/logeate</a>';
+          }
+          
+
+
+
+
+
+          ?>
+
+
       </div>
-
-    <?php
-    } else {
-    ?>
-      <a href="index.php?c=User&a=actionLogin" class="nav-link text-white">
-        <h1 class="text-light m-0"><i class="bi bi-person">
-          </i></h1>
-      </a>
-    <?php
-    }
-
-    ?>
-
-
+    </div> 
+    <!-- USER -->
   </nav>
   <!-- Navbar End -->

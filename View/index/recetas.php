@@ -22,7 +22,7 @@
 
         <div class="row g-4 mt-5">
         <?php foreach($this->model->ListarRamdon(3) as $r): ?>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-4 col-md-6 " >
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
                     <div class="text-center p-4">
                         <h3 class="mb-3"><?= $r->name; ?></h3>
