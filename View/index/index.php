@@ -198,7 +198,7 @@
             <img src="assets/img/servicio1.webp" class="w-75" alt="">
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-            <h3>Enim quis est voluptatibus aliquid consequatur</h3>
+            <h3>Pon te en contacto con nosotros</h3>
             <form action="your_form_submission_url" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
