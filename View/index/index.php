@@ -219,8 +219,13 @@
 </div>
 
 
-<div id="cookieConsent">
-        Acepta las cookies o si no , siempre que cierres el navegador te saldra este mensaje
-        <button id="acceptCookie">Aceptar</button>
-        <button id="rejectCookie">Rechazar</button>
-    </div>
+
+
+<div id="overlay23"></div>
+<div id="cookieConsent" class="alert alert-warning alert-dismissible fade show position-fixed" role="alert" style="left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    Acepta las cookies o si no, siempre que cierres el navegador te saldrá este mensaje
+    <button id="acceptCookie" class="btn btn-success btn-sm ml-2">Aceptar</button>
+    <button id="rejectCookie" class="btn btn-danger btn-sm ml-2">Rechazar</button>
+    
+</div>
+

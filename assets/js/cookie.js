@@ -21,19 +21,29 @@ function getCookie(name) {
 
 function checkCookieConsent() {
     const consent = getCookie("cookieConsent");
-    if (!consent) {
-        document.getElementById("cookieConsent").style.display = "block";
+    const cookieConsentDiv = document.getElementById("cookieConsent");
+    const overlay = document.getElementById("overlay23");
+    if (consent) {
+        cookieConsentDiv.style.display = "none";
+        overlay.style.display = "none";
+    } else {
+        cookieConsentDiv.style.display = "block";
+        overlay.style.display = "block";
     }
 }
 
 document.getElementById("acceptCookie").addEventListener("click", function() {
     setCookie("cookieConsent", "accepted", 365);
     document.getElementById("cookieConsent").style.display = "none";
+    document.getElementById("overlay23").style.display = "none";
 });
 
 document.getElementById("rejectCookie").addEventListener("click", function() {
     setCookie("cookieConsent", "rejected", 0);  // Session cookie, will be deleted when the browser closes
     document.getElementById("cookieConsent").style.display = "none";
+    document.getElementById("overlay23").style.display = "none";
 });
 
-window.onload = checkCookieConsent;
+document.addEventListener("DOMContentLoaded", function() {
+    checkCookieConsent();
+});
