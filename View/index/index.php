@@ -218,3 +218,11 @@
     </div>
 </div>
 
+
+
+<div id="cookiePopup">
+    <p>We use cookies to improve your experience. Do you accept?</p>
+    <button id="acceptCookies">Accept</button>
+    
+    <button id="closePopup">Close</button>
+</div>

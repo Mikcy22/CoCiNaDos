@@ -73,6 +73,6 @@
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/botonesañadir.js"></script>
-
+    <script src="assets/js/cookis.js"></script>
     </body>
 </html>

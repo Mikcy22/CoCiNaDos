@@ -12233,3 +12233,24 @@ div#userMenu {
 p#textoSlider {
     font-size: 25px;
 }
+
+ /* Basic styles for the popup */
+ #cookiePopup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#cookiePopup p {
+    margin: 0 0 10px;
+}
+
+#cookiePopup button {
+    margin-right: 10px;
+}
