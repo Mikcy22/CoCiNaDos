@@ -219,10 +219,8 @@
 </div>
 
 
-
-<div id="cookiePopup">
-    <p>We use cookies to improve your experience. Do you accept?</p>
-    <button id="acceptCookies">Accept</button>
-    
-    <button id="closePopup">Close</button>
-</div>
+<div id="cookieConsent">
+        Acepta las cookies o si no , siempre que cierres el navegador te saldra este mensaje
+        <button id="acceptCookie">Aceptar</button>
+        <button id="rejectCookie">Rechazar</button>
+    </div>
