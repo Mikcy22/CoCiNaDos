@@ -85,4 +85,59 @@
     </div>
 
 
+<<<<<<< HEAD
     
+=======
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2>Bienvenido</h2>
+            <p>Seleccione una opción para continuar</p>
+        </div>
+        <div class="text-center mb-4">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary" onclick="showForm('loginForm')">Login</button>
+                <button type="button" class="btn btn-secondary" onclick="showForm('registerForm')">Register</button>
+            </div>
+        </div>
+        <div id="loginForm" class="card p-4 shadow-sm mb-5" >
+            <h3 class="card-title">Login</h3>
+            <form action="index.php?c=User&a=actionLogin" method="POST">
+                <div class="mb-3">
+                    <label for="correo_electronico" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+        <div id="registerForm" class="card p-4 shadow-sm mb-5" style="display:none;">
+            <h3 class="card-title">Register</h3>
+            <form action="index.php?c=User&a=register2" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correo_electronico" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                </div>
+                <button type="submit" class="btn btn-secondary w-100">Register</button>
+            </form>
+        </div>
+    </div>
+>>>>>>> ac1aa1bafa608e25120e0e808d4864c81ce6064b
