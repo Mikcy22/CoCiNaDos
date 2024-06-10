@@ -74,5 +74,6 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/botonesañadir.js"></script>
     <script src="assets/js/cookie.js"></script>
+    <script src ="assets/loginRegister.js"></script>
     </body>
 </html>
