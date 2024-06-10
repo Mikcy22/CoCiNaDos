@@ -18,6 +18,12 @@ class User {
     }
 
     public function register($username, $nombre, $apellidos, $correo_electronico, $contrasena) {
+        // Verificar si el correo electrónico ya existe
+        if ($this->emailExists($correo_electronico)) {
+            // Mostrar un mensaje de error si el correo ya existe
+            return "Credenciales no disponibles: el correo electrónico ya está en uso.";
+        }
+        
         $passwordHash = password_hash($contrasena, PASSWORD_BCRYPT);
         $sql = "INSERT INTO usuarios (username, nombre, apellidos, correo_electronico, contrasena) VALUES (:username, :nombre, :apellidos, :correo_electronico, :contrasena)";
         $stmt = $this->pdo->prepare($sql);
@@ -26,7 +32,21 @@ class User {
         $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->bindParam(':contrasena', $passwordHash);
-        return $stmt->execute();
+        
+        if ($stmt->execute()) {
+            return "Registro exitoso";
+        } else {
+            return "Error al registrar usuario";
+        }
+    }
+
+    // Método para verificar si un correo electrónico ya está registrado
+    private function emailExists($correo_electronico) {
+        $sql = "SELECT COUNT(*) FROM usuarios WHERE correo_electronico = :correo_electronico";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':correo_electronico', $correo_electronico);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
     }
 
     public function login($correo_electronico, $contrasena) {
@@ -97,10 +117,8 @@ class User {
 
     public function Actualizar($data) {
         try {
-            // Base query without the password field
             $sql = "UPDATE usuarios SET username = ?, nombre = ?, apellidos = ?, correo_electronico = ?";
 
-            // Parameters array
             $params = [
                 $data->username,
                 $data->nombre,
@@ -108,17 +126,14 @@ class User {
                 $data->correo_electronico
             ];
 
-            // Add password to query and parameters if provided
             if (!empty($data->contrasena)) {
                 $sql .= ", contrasena = ?";
                 $params[] = $data->contrasena;
             }
 
-            // Append WHERE clause
             $sql .= " WHERE user_id = ?";
             $params[] = $data->id;
 
-            // Prepare and execute the statement
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
         } catch (Exception $e) {
@@ -137,9 +152,3 @@ class User {
         }
     }
 }
-
-
-
-
-
-

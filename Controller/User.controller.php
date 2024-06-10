@@ -23,9 +23,9 @@ class UserController {
             if ($user) {
                 start_session();
                 $_SESSION['username'] = $user['username'];
-                header('Location: index.php');
+                header('Location: index.php?');
             } else {
-                echo "Invalid credentials";
+                //header('Location: index.php?c=User&a=actionLogin');
             }
         } else {
             require_once 'view/header.php';

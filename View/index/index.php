@@ -190,16 +190,19 @@
     <!-- Facts End -->
 
     <?php include 'recetas.php'; ?>
-
-
-    <div class="container mb-5">
+    <script>
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Reemplaza "YOUR_USER_ID" con tu User ID de EmailJS
+        })();
+    </script>   
+<div class="container mb-5">
     <div class="row justify-content-around gy-4">
-        <div class="features-image col-lg-6 order-1 order-lg-1 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+        <div class="features-image col-lg-6 order-1 order-lg-1" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/servicio1.webp" class="w-75" alt="">
         </div>
-        <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2" data-aos="fade-up" data-aos-delay="100">
             <h3>Pon te en contacto con nosotros</h3>
-            <form action="your_form_submission_url" method="post">
+            <form id="contact-form">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -214,10 +217,24 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
+            <div id="response-message"></div>
         </div>
     </div>
-</div>
+</div>      
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('response-message').innerHTML = 'Correo enviado con éxito.';
+        }, function(error) {
+            console.log('FAILED...', error);
+            document.getElementById('response-message').innerHTML = 'Hubo un error al enviar el correo.';
+        });
+});
+</script>
 
 
 

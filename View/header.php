@@ -126,13 +126,13 @@ start_session();
               <div class="dropdown-menu m-0">
                 <a class="dropdown-item" href="index.php?c=User&a=showUpdateForm"><i class="bi bi-person"> </i>Perfil</a>
                 <a class="dropdown-item" href="index.php?c=User&a=showUserRecipes"><i class="bi bi-bookmark-heart"></i>Tus recetas</a>
-                <a class="dropdown-item" href="index.php?c=User&a=logout"><i class="bi bi-door-closed"></i>Logut</a>              
+                             
               ';
               if($_SESSION['username'] === "admin"){
                 echo '<a class="dropdown-item" href="index.php?c=User&a=adminPanel"><i class="bi bi-wrench-adjustable"></i>Panel admin</a>';
               }
               
-             echo '</div></div>';
+             echo '<a class="dropdown-item" href="index.php?c=User&a=logout"><i class="bi bi-door-closed"></i>Logut</a> </div></div>';
 
              
           }
