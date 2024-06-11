@@ -36,6 +36,7 @@ class UserController {
 
     public function logout() {
         start_session();
+        setcookie('cookieConsent', '', time() - 3600, '/');
         session_destroy();
         header('Location: index.php');
     }
@@ -59,8 +60,12 @@ class UserController {
         }
     }
 
+
+
     public function adminPanel() {
         $recipes = $this->user->TotaRecetas();
+        $avisos = $this->user->getAvisos();
+        $avisos = $this->user->TotaAvisos();
         require_once 'view/header.php';
         require_once 'view/showRecipes.php';
         require_once 'view/footer.php';
@@ -145,7 +150,43 @@ class UserController {
             }
         }
     }
+
+    
+    public function guardarAviso() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $message = $_POST['message'];
+    
+                // Depuración: mostrar datos recibidos
+                echo "Datos recibidos: $name, $email, $message";
+    
+                if ($this->user->guardarAviso($name, $email, $message)) {
+                    echo "Nuevo registro creado exitosamente";
+                    header('Location: index.php?');
+                } else {
+                    echo "Error al crear el registro.";
+                }
+            } else {
+                echo "Todos los campos son obligatorios.";
+            }
+        } else {
+            echo "Método de solicitud no válido.";
+        }
+    }
+    
+    
+
+
+
+
+
+
+    public function showAvisos() {
+        $avisos = $this->user->getAvisos();
+        require 'views/showRecipes.php';
+    }
+    
 }
-
-
 ?>

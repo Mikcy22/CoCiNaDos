@@ -116,7 +116,22 @@ class FormularioController {
         // Redirigir a la página principal
         header("location: Index.php");
     }
+
+
+
+
+
+
+   
 }
+
+
+
+
+
+
+
+
 
 
 ?>
