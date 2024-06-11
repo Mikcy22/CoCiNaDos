@@ -40,6 +40,7 @@ class User {
         }
     }
 
+
     // Método para verificar si un correo electrónico ya está registrado
     private function emailExists($correo_electronico) {
         $sql = "SELECT COUNT(*) FROM usuarios WHERE correo_electronico = :correo_electronico";
@@ -48,6 +49,9 @@ class User {
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
+
+
+
 
     public function login($correo_electronico, $contrasena) {
         $sql = "SELECT * FROM usuarios WHERE correo_electronico = :correo_electronico";
@@ -63,6 +67,49 @@ class User {
         return false;
     }
 
+    public function TotaAvisos() {
+        try {
+            $stm = $this->pdo->prepare("SELECT id,name, email, message, created_at FROM contacts;");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+
+    public function guardarAviso($name, $email, $message) {
+        $sql = "INSERT INTO contacts (name, email, message) VALUES (:name, :email, :message)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':message', $message);
+    
+        // Depuración: verificar si la consulta se prepara correctamente
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            // Agregar mensaje de error
+            $errorInfo = $stmt->errorInfo();
+            echo "Error al ejecutar la sentencia: " . $errorInfo[2];
+            return false;
+        }
+    }
+    
+
+    
+
+
+    public function getAvisos() {
+        $sql = "SELECT * FROM contacts";
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+
+
     public function TotaRecetas() {
         try {
             $stm = $this->pdo->prepare("SELECT name, description, id, username FROM recipes;");
@@ -72,6 +119,12 @@ class User {
             die($e->getMessage());
         }
     }
+
+
+
+
+
+
 
     public function BorrarRecetas($id) {
         try {

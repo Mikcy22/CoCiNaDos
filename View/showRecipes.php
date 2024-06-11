@@ -14,8 +14,19 @@
 
 
 <div class="container">
+    <nav>
 
-    <table class="table table-dark table-striped">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Recetas</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Avisos</button>
+  </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+  <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -46,5 +57,97 @@
     <?php endforeach; ?>
         </tbody>
     </table>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+
+
+
+
+
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+  <table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Mensaje</th>
+            <th>Email</th>
+            <th>Fecha de envío</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($avisos)): ?>
+            <?php foreach ($avisos as $aviso): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($aviso->id); ?></td>
+                <td><?php echo htmlspecialchars($aviso->name); ?></td>
+                <td><?php echo htmlspecialchars($aviso->message); ?></td>
+                <td><?php echo htmlspecialchars($aviso->email); ?></td>
+                <td><?php echo htmlspecialchars($aviso->created_at); ?></td>
+            </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="5">No hay avisos.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
 
 </div>
