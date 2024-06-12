@@ -42,7 +42,7 @@
                 <button type="button" class="btn btn-secondary" onclick="showForm('registerForm')">Register</button>
             </div>
         </div>
-        <div id="loginForm" class="card p-4 shadow-sm mb-5" >
+        <div id="loginForm" class="card p-4 shadow-sm mb-5" style="display:none;">
             <h3 class="card-title">Login</h3>
             <form action="index.php?c=User&a=actionLogin" method="POST">
                 <div class="mb-3">

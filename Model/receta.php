@@ -76,7 +76,7 @@ class Receta {
 
             $result = array();
             //Sentencia SQL para selección de datos.
-            $stm = $this->pdo->prepare("SELECT * FROM recipes where $categoria = $subcategoria");
+            $stm = $this->pdo->prepare("SELECT id,name,time_elaboration,calorias,num_personas,tipo_plato,nacionalidad,tipo_dieta,metodo_elaboracion,fecha_creacion,ingrediente_especial,image,description,username FROM recipes where $categoria = $subcategoria");
             //Ejecución de la sentencia SQL.
             $stm->execute();
             //fetchAll — Devuelve un array que contiene todas las filas del conjunto
@@ -90,7 +90,7 @@ class Receta {
 
     public function TotalRecipes() {
         try {
-            $stm = $this->pdo->prepare("SELECT COUNT(*) FROM recipes");
+            $stm = $this->pdo->prepare("SELECT COUNT(id) FROM recipes");
             $stm->execute();
             return (int) $stm->fetchColumn();
         } catch (Exception $e) {
@@ -125,7 +125,7 @@ class Receta {
         try {
             $result = array();
             //Sentencia SQL para selección de datos.
-            $stm = $this->pdo->prepare("SELECT * FROM recipes ORDER BY RAND()LIMIT $num;");
+            $stm = $this->pdo->prepare("SELECT id,name,time_elaboration,calorias,num_personas,tipo_plato,nacionalidad,tipo_dieta,metodo_elaboracion,fecha_creacion,ingrediente_especial,image,description,username FROM recipes ORDER BY RAND()LIMIT $num;");
             //Ejecución de la sentencia SQL.
             $stm->execute();
             //fetchAll — Devuelve un array que contiene todas las filas del conjunto
@@ -151,7 +151,7 @@ class Receta {
 
     public function DatosReceta($recipeId){
         // Obtener información básica de la receta
-        $sql = "SELECT * FROM recipes WHERE id = ?";
+        $sql = "SELECT id,name,time_elaboration,calorias,num_personas,tipo_plato,nacionalidad,tipo_dieta,metodo_elaboracion,fecha_creacion,ingrediente_especial,image,description,username FROM recipes WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$recipeId]);
         $recipe = $stmt->fetch();
@@ -161,13 +161,13 @@ class Receta {
         }
 
         // Obtener ingredientes de la receta
-        $sql = "SELECT * FROM ingredientes WHERE receta_id = ?";
+        $sql = "SELECT id,receta_id,ingrediente,cantidad FROM ingredientes WHERE receta_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$recipeId]);
         $ingredientes = $stmt->fetchAll();
 
         // Obtener pasos de la receta
-        $sql = "SELECT * FROM pasos WHERE receta_id = ?";
+        $sql = "SELECT id,receta_id,paso FROM pasos WHERE receta_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$recipeId]);
         $pasos = $stmt->fetchAll();
