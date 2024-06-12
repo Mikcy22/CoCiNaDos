@@ -43,7 +43,7 @@ class User {
 
     // Método para verificar si un correo electrónico ya está registrado
     private function emailExists($correo_electronico) {
-        $sql = "SELECT COUNT(*) FROM usuarios WHERE correo_electronico = :correo_electronico";
+        $sql = "SELECT COUNT(user_id) FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->execute();
@@ -54,7 +54,7 @@ class User {
 
 
     public function login($correo_electronico, $contrasena) {
-        $sql = "SELECT * FROM usuarios WHERE correo_electronico = :correo_electronico";
+        $sql = "SELECT user_id,nombre,apellidos,correo_electronico,contrasena,fecha_registro,username FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->execute();
@@ -102,7 +102,7 @@ class User {
 
 
     public function getAvisos() {
-        $sql = "SELECT * FROM contacts";
+        $sql = "SELECT id,name,email,message,created_at from contacts";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -146,7 +146,7 @@ class User {
 
     public function MostrarRecetasUser($username) {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM `cocinados`.`recipes` WHERE `username` = :username");
+            $stm = $this->pdo->prepare("SELECT id,name,time_elaboration,calorias,num_personas,tipo_plato,nacionalidad,tipo_dieta,metodo_elaboracion,fecha_creacion,ingrediente_especial,image,description,username FROM recipes WHERE `username` = :username");
             $stm->bindParam(':username', $username);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -157,7 +157,7 @@ class User {
 
     public function userExist($correo_electronico, $contrasena) {
         try {
-            $sql = "SELECT COUNT(*) FROM usuarios WHERE correo_electronico = :correo_electronico AND contrasena = :contrasena";
+            $sql = "SELECT COUNT(user_id) FROM usuarios WHERE correo_electronico = :correo_electronico AND contrasena = :contrasena";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':correo_electronico', $correo_electronico);
             $stmt->bindParam(':contrasena', $contrasena);
@@ -196,7 +196,7 @@ class User {
 
     public function getUserByUsername($username) {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM usuarios WHERE username = :username");
+            $stm = $this->pdo->prepare("SELECT user_id,nombre,apellidos,correo_electronico,contrasena,fecha_registro,username FROM usuarios WHERE username = :username");
             $stm->bindParam(':username', $username);
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
