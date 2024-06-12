@@ -42,13 +42,15 @@ class User {
 
 
     // Método para verificar si un correo electrónico ya está registrado
-    private function emailExists($correo_electronico) {
+    public function emailExists($correo_electronico) {
         $sql = "SELECT COUNT(user_id) FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
+
+
 
 
 
