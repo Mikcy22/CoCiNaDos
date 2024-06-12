@@ -1,7 +1,9 @@
-function showForm(formId) {
-    // Ocultar todos los formularios
-    document.getElementById('loginForm').style.display = 'block';
-    document.getElementById('registerForm').style.display = 'none';
-    // Mostrar el formulario seleccionado
-    document.getElementById(formId).style.display = 'block';
-}
+document.getElementById('loginBtn').addEventListener('click', function() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+});
+
+document.getElementById('registerBtn').addEventListener('click', function() {
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.getElementById('loginForm').classList.add('hidden');
+});
