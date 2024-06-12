@@ -1,6 +1,7 @@
 <?php
 
-class User {
+class User
+{
     private $pdo;
     public $id;
     public $username;
@@ -9,7 +10,8 @@ class User {
     public $correo_electronico;
     public $contrasena;
 
-    public function __CONSTRUCT() {
+    public function __CONSTRUCT()
+    {
         try {
             $this->pdo = Database::Conectar();
         } catch (Exception $e) {
@@ -17,13 +19,15 @@ class User {
         }
     }
 
-    public function register($username, $nombre, $apellidos, $correo_electronico, $contrasena) {
+    public function register($username, $nombre, $apellidos, $correo_electronico, $contrasena)
+    {
         // Verificar si el correo electrónico ya existe
         if ($this->emailExists($correo_electronico)) {
             // Mostrar un mensaje de error si el correo ya existe
-            return "Credenciales no disponibles: el correo electrónico ya está en uso.";
+            //return "Credenciales no disponibles: el correo electrónico ya está en uso.";
+            header("Location: index.php?c=User&a=actionLogin&error=2");
         }
-        
+
         $passwordHash = password_hash($contrasena, PASSWORD_BCRYPT);
         $sql = "INSERT INTO usuarios (username, nombre, apellidos, correo_electronico, contrasena) VALUES (:username, :nombre, :apellidos, :correo_electronico, :contrasena)";
         $stmt = $this->pdo->prepare($sql);
@@ -32,17 +36,20 @@ class User {
         $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->bindParam(':contrasena', $passwordHash);
-        
+
+        // Depuración: Verificar si la consulta se prepara y ejecuta correctamente
         if ($stmt->execute()) {
             return "Registro exitoso";
         } else {
-            return "Error al registrar usuario";
+            $errorInfo = $stmt->errorInfo();
+            return "Error al registrar usuario: " . $errorInfo[2];
         }
     }
 
 
     // Método para verificar si un correo electrónico ya está registrado
-    public function emailExists($correo_electronico) {
+    public function emailExists($correo_electronico)
+    {
         $sql = "SELECT COUNT(user_id) FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
@@ -55,7 +62,8 @@ class User {
 
 
 
-    public function login($correo_electronico, $contrasena) {
+    public function login($correo_electronico, $contrasena)
+    {
         $sql = "SELECT user_id,nombre,apellidos,correo_electronico,contrasena,fecha_registro,username FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
@@ -69,7 +77,8 @@ class User {
         return false;
     }
 
-    public function TotaAvisos() {
+    public function TotaAvisos()
+    {
         try {
             $stm = $this->pdo->prepare("SELECT id,name, email, message, created_at FROM contacts;");
             $stm->execute();
@@ -81,13 +90,14 @@ class User {
 
 
 
-    public function guardarAviso($name, $email, $message) {
+    public function guardarAviso($name, $email, $message)
+    {
         $sql = "INSERT INTO contacts (name, email, message) VALUES (:name, :email, :message)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':message', $message);
-    
+
         // Depuración: verificar si la consulta se prepara correctamente
         if ($stmt->execute()) {
             return true;
@@ -98,12 +108,13 @@ class User {
             return false;
         }
     }
-    
-
-    
 
 
-    public function getAvisos() {
+
+
+
+    public function getAvisos()
+    {
         $sql = "SELECT id,name,email,message,created_at from contacts";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -112,7 +123,8 @@ class User {
 
 
 
-    public function TotaRecetas() {
+    public function TotaRecetas()
+    {
         try {
             $stm = $this->pdo->prepare("SELECT name, description, id, username FROM recipes;");
             $stm->execute();
@@ -128,7 +140,8 @@ class User {
 
 
 
-    public function BorrarRecetas($id) {
+    public function BorrarRecetas($id)
+    {
         try {
             $stm = $this->pdo->prepare("DELETE FROM `cocinados`.`recipes` WHERE `id` = :id;");
             $stm->bindParam(':id', $id);
@@ -146,7 +159,8 @@ class User {
         }
     }
 
-    public function MostrarRecetasUser($username) {
+    public function MostrarRecetasUser($username)
+    {
         try {
             $stm = $this->pdo->prepare("SELECT id,name,time_elaboration,calorias,num_personas,tipo_plato,nacionalidad,tipo_dieta,metodo_elaboracion,fecha_creacion,ingrediente_especial,image,description,username FROM recipes WHERE `username` = :username");
             $stm->bindParam(':username', $username);
@@ -157,7 +171,8 @@ class User {
         }
     }
 
-    public function userExist($correo_electronico, $contrasena) {
+    public function userExist($correo_electronico, $contrasena)
+    {
         try {
             $sql = "SELECT COUNT(user_id) FROM usuarios WHERE correo_electronico = :correo_electronico AND contrasena = :contrasena";
             $stmt = $this->pdo->prepare($sql);
@@ -170,7 +185,8 @@ class User {
         }
     }
 
-    public function Actualizar($data) {
+    public function Actualizar($data)
+    {
         try {
             $sql = "UPDATE usuarios SET username = ?, nombre = ?, apellidos = ?, correo_electronico = ?";
 
@@ -196,7 +212,8 @@ class User {
         }
     }
 
-    public function getUserByUsername($username) {
+    public function getUserByUsername($username)
+    {
         try {
             $stm = $this->pdo->prepare("SELECT user_id,nombre,apellidos,correo_electronico,contrasena,fecha_registro,username FROM usuarios WHERE username = :username");
             $stm->bindParam(':username', $username);
