@@ -29,7 +29,7 @@ class UserController
                 $_SESSION['username'] = $user['username'];
                 header('Location: index.php?');
             } else {
-                //header('Location: index.php?c=User&a=actionLogin');
+                header('Location: index.php?c=User&a=actionLogin&error=1');
             }
         } else {
             require_once 'view/header.php';
@@ -59,7 +59,7 @@ class UserController
 
             if ($registerResult === "Registro exitoso") {
                 $user = $this->user->login($correo_electronico, $contrasena);
-                var_dump($user);
+                header("Location: index.php?c=User&a=actionLogin&error=1");
             } else {
                 echo $registerResult;  // Mostrar el mensaje de error específico
             }
