@@ -97,7 +97,7 @@ class User
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':message', $message);
-
+    
         // Depuración: verificar si la consulta se prepara correctamente
         if ($stmt->execute()) {
             return true;
@@ -108,6 +108,7 @@ class User
             return false;
         }
     }
+    
 
 
 

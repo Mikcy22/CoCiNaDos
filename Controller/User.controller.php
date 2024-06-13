@@ -29,7 +29,7 @@ class UserController
                 $_SESSION['username'] = $user['username'];
                 header('Location: index.php?');
             } else {
-                header('Location: index.php?c=User&a=actionLogin&error=1');
+                header('Location: index.php?actionLogin&error=1');
             }
         } else {
             require_once 'view/header.php';
@@ -168,29 +168,30 @@ class UserController
 
 
     public function guardarAviso()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $message = $_POST['message'];
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $message = $_POST['message'];
 
-                // Depuración: mostrar datos recibidos
-                echo "Datos recibidos: $name, $email, $message";
+            // Depuración: mostrar datos recibidos
+            //echo "Datos recibidos: $name, $email, $message";
 
-                if ($this->user->guardarAviso($name, $email, $message)) {
-                    echo "Nuevo registro creado exitosamente";
-                    header('Location: index.php?');
-                } else {
-                    echo "Error al crear el registro.";
-                }
+            if ($this->user->guardarAviso($name, $email, $message)) {
+                header('Location: index.php?#ancla'); // Redirigir al ancla después de un envío exitoso
+                exit(); // Asegurar que se detiene la ejecución después de la redirección
             } else {
-                echo "Todos los campos son obligatorios.";
+                echo "Error al crear el registro.";
             }
         } else {
-            echo "Método de solicitud no válido.";
+            echo "Todos los campos son obligatorios.";
         }
+    } else {
+        echo "Método de solicitud no válido.";
     }
+}
+
 
     public function showAvisos()
     {

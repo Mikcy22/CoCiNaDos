@@ -197,7 +197,7 @@
     <!-- Facts End -->
 
     <?php include 'recetas.php'; ?>
-
+ 
     <div class="container mb-5">
         <div class="row justify-content-around gy-4">
             <div class="features-image col-lg-6 order-1 order-lg-1" data-aos="fade-up" data-aos-delay="200">
@@ -207,9 +207,8 @@
                 data-aos-delay="100">
                 <h3>Pon te en contacto con nosotros</h3>
 
-
-
                 <form action="index.php?c=User&a=guardarAviso" method="POST" id="contact-form">
+    
     <div class="mb-3">
         <label for="name" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="name" name="name" required>
@@ -225,11 +224,6 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 
-
-
-
-
-                <div id="response-message"></div>
             </div>
         </div>
     </div>
@@ -240,8 +234,10 @@
     <div id="overlay23"></div>
     <div id="cookieConsent" class="alert alert-warning alert-dismissible fade show position-fixed" role="alert"
         style="left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 9999;">
-        Acepta las cookies o si no, siempre que cierres el navegador te saldrá este mensaje
-        <button id="acceptCookie" class="btn btn-success btn-sm ml-2">Aceptar</button>
+        <p>Acepta las cookies o si no, siempre que cierres el navegador te saldrá este mensaje</p>
+        <button id="acceptCookie" class="btn btn-success btn-sm ml-2">Aceptar cookies básicas</button>
         <button id="rejectCookie" class="btn btn-danger btn-sm ml-2">Rechazar</button>
+        <button id="rejectCookie" class="btn btn-primary btn-sm ml-2">Personalizar</button>
+
 
     </div>
