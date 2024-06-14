@@ -26,7 +26,7 @@ start_session();
   <!-- hoja de estilos -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- hOJA DE ESTILOS -->
+  <!-- hoja de estilos -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 

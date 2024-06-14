@@ -29,10 +29,10 @@ class UserController
             session_start();
             $_SESSION['username'] = $user['username'];
             header('Location: index.php');
-            exit(); // Agrega exit() después de la redirección para asegurarte de que el script se detenga
+            exit(); // exit() para asegurar de que el script se detenga
         } else {
             header('Location: index.php?c=User&action=Login&error=1');
-            exit(); // Agrega exit() después de la redirección para asegurarte de que el script se detenga
+            exit(); // exit() para asegurar de que el script se detenga
         }
     } else {
         require_once 'view/header.php';
