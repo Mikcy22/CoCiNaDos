@@ -19,28 +19,27 @@ class UserController
     }
 
     public function actionLogin()
-{
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $correo_electronico = $_POST['correo_electronico'];
-        $contrasena = $_POST['contrasena'];
-        $user = $this->user->login($correo_electronico, $contrasena);
-        
-        if ($user) {
-            session_start();
-            $_SESSION['username'] = $user['username'];
-            header('Location: index.php');
-            exit(); // exit() para asegurar de que el script se detenga
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $correo_electronico = $_POST['correo_electronico'];
+            $contrasena = $_POST['contrasena'];
+            $user = $this->user->login($correo_electronico, $contrasena);
+            
+            if ($user) {
+                session_start();
+                $_SESSION['username'] = $user['username'];
+                header('Location: index.php');
+                exit();
+            } else {
+                header('Location: index.php?c=User&action=Login&error=1');
+                exit();
+            }
         } else {
-            header('Location: index.php?c=User&action=Login&error=1');
-            exit(); // exit() para asegurar de que el script se detenga
+            require_once 'view/header.php';
+            require 'view/formUser.php';
+            require_once 'view/footer.php';
         }
-    } else {
-        require_once 'view/header.php';
-        require 'view/formUser.php';
-        require_once 'view/footer.php';
     }
-}
-
 
     public function logout()
     {
@@ -59,26 +58,28 @@ class UserController
             $correo_electronico = $_POST['correo_electronico'];
             $contrasena = $_POST['contrasena'];
 
-
             if ($username === "admin") {
                 header("Location: index.php?c=User&a=actionLogin&error=3");
                 return;
             }
 
-
-
             $registerResult = $this->user->register($username, $nombre, $apellidos, $correo_electronico, $contrasena);
 
             if ($registerResult === "Registro exitoso") {
                 $user = $this->user->login($correo_electronico, $contrasena);
-                header("Location: index.php?c=User&a=actionLogin&error=1");
+                if ($user) {
+                    session_start();
+                    $_SESSION['username'] = $user['username'];
+                    header("Location: index.php");
+                } else {
+                    echo "Error al iniciar sesión después del registro.";
+                }
             } else {
-                echo $registerResult;  // Mostrar el mensaje de error específico
+                echo $registerResult;
             }
         } else {
             require 'view/register.php';
         }
-
     }
 
     public function adminPanel()
@@ -174,7 +175,6 @@ class UserController
             $data->contrasena = !empty($contrasena) ? password_hash($contrasena, PASSWORD_BCRYPT) : null;
 
             if ($this->user->Actualizar($data)) {
-                //echo "Usuario actualizado exitosamente";
                 if (!isset($_SESSION['username'])) {
                     header('Location: index.php?c=User&a=logout');
                     exit;
@@ -185,7 +185,6 @@ class UserController
         }
     }
 
-
     public function guardarAviso()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -194,12 +193,9 @@ class UserController
                 $email = $_POST['email'];
                 $message = $_POST['message'];
 
-                // Depuración: mostrar datos recibidos
-                //echo "Datos recibidos: $name, $email, $message";
-
                 if ($this->user->guardarAviso($name, $email, $message)) {
-                    header('Location: index.php?#ancla'); // Redirigir al ancla después de un envío exitoso
-                    exit(); // Asegurar que se detiene la ejecución después de la redirección
+                    header('Location: index.php?#ancla');
+                    exit();
                 } else {
                     echo "Error al crear el registro.";
                 }
@@ -210,7 +206,6 @@ class UserController
             echo "Método de solicitud no válido.";
         }
     }
-
 
     public function showAvisos()
     {
