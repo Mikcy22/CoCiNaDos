@@ -1,6 +1,6 @@
 <style type="text/css">
 
-    </style>
+</style>
 
 <?php if (isset($receta)) : ?>
 
@@ -28,93 +28,12 @@
 <?php endif; ?>
 
 
-
-
 <div class="container mb-5">
     <div class="row justify-content-around gy-4">
 
         <div class="features-image col-lg-6 order-1 order-lg-1 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             <img src="<?php echo htmlspecialchars($receta['image']); ?>" class="w-75" alt="">
             <p>Autor: <?php echo htmlspecialchars($receta['username']); ?></p>
-        </div>
-
-        <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2 aos-init aos-animate">
-            <h1 class="nombreR"><?php echo ($receta['name']); ?></h1>
-            <p><?php echo htmlspecialchars($receta['description']); ?></p>
-            <h2>Ingredientes</h2>
-            <ul>
-                <?php foreach ($receta['ingredientes'] as $ingrediente) : ?>
-                    <li><?php echo htmlspecialchars($ingrediente['ingrediente']) . ": " . htmlspecialchars($ingrediente['cantidad']); ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-
-            <div class="container my-5">
-                <div class="row text-center justify-content-center">
-
-                    <div class="col-md-4 mb-4" id="datos">
-                        <div class="card border-primary card-equal-height custom-card">
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <div class="responsive-number text-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                                        <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15" />
-                                    </svg>
-                                </div>
-                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['calorias']); ?> calorias</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4" id="datos">
-                        <div class="card border-success card-equal-height custom-card">
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <div class="responsive-number text-success"><i class="bi bi-stopwatch"></i></div>
-                                <p class="mt-2 custom-text"><?php echo htmlspecialchars($receta['time_elaboration']); ?> minutos</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4" id="datos">
-                        <div class="card border-danger card-equal-height custom-card">
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <div class="responsive-number text-danger"><i class="bi bi-person"></i></div>
-                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['num_personas']); ?> personas</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-4" id="datos">
-                        <div class="card border-info diet-card card-equal-height custom-card">
-                            <div class="card-body d-flex flex-column justify-content-center">
-                                <h5 class="card-title text-info">Tipo de dieta</h5>
-                                <p class="card-text">Mediterranea</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 mb-4" id="datos">
-                    <div class="card border-secondary diet-card card-equal-height custom-card">
-                        <div class="card-body">
-                            <h5 class="card-title text-secondary">Metodo cocinado</h5>
-                            <p class="card-text">Asado</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-12 col-md-4 mb-4" id="datos">
-                    <div class="card border-warning diet-card card-equal-height custom-card">
-                        <div class="card-body">
-                            <h5 class="card-title text-warning">Ingrediente especial</h5>
-                            <p class="card-text">Vegetales y legumbres</p>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                
-                    
-                </div>
-            </div>
 
             <h2>Pasos de elaboración:</h2>
             <div class="acordeon" id="acordeon">
@@ -135,6 +54,83 @@
                     <?php $num++; ?>
                 <?php endforeach; ?>
             </div>
+
+
+
+        </div>
+
+        <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2 aos-init aos-animate">
+            <h1 class="nombreR"><?php echo ($receta['name']); ?></h1>
+            <p><?php echo htmlspecialchars($receta['description']); ?></p>
+            <h2>Ingredientes</h2>
+            <ul>
+                <?php foreach ($receta['ingredientes'] as $ingrediente) : ?>
+                    <li><?php echo htmlspecialchars(ucfirst($ingrediente['ingrediente'])) . ": " . htmlspecialchars($ingrediente['cantidad']); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+
+            <div class="container my-5">
+                <div class="row text-center justify-content-center">
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-primary"><img src="https://img.icons8.com/?size=256&id=zd6trzaPi6R3&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['calorias']); ?> calorias</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-success"><img src="https://img.icons8.com/?size=256&id=Y6SzeUtiLnxL&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"><?php echo htmlspecialchars($receta['time_elaboration']); ?> minutos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-danger"><img src="https://img.icons8.com/?size=256&id=nXduhA13SMUu&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['num_personas']); ?> personas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-info"><img src="https://img.icons8.com/?size=256&id=naNmza0RrDDM&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['tipo_dieta']); ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-secondary"><img src="https://img.icons8.com/?size=256&id=6KHPfr9907KB&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['metodo_elaboracion']); ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4" id="datos">
+                        <div class="card border-info card-equal-height custom-card">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <div class="responsive-number text-warning"><img src="https://img.icons8.com/?size=256&id=hwB2vUsbIvJ2&format=png" id="iconoCarne"></div>
+                                <p class="mt-2 custom-text"> <?php echo htmlspecialchars($receta['ingrediente_especial']); ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
 
         </div>
     </div>

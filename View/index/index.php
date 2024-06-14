@@ -159,85 +159,93 @@
     $totalUser = $recetaModel->TotalUsuarios();
     ?>
 
-    <!-- Facts Start -->
+ 
     <div class="container-xxl py-6">
-        <div class="container">
-            <div class="row g-2">
+    <div class="container">
+        <div class="row g-2">
 
-                <div class="col-lg-4 col-md-6 ">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5">
-                        <i class="fa fa-pizza-slice fa-4x text-primary mb-4"></i>
-                        <p class="mb-2">Recetas totales</p>
-                        <!--RECETAS TOTALES AQUI -->
-                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalRecetas; ?></h1>
-                    </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="fact-item text-center h-100 p-5">
+                    <i class="fa fa-pizza-slice fa-4x text-primary mb-4"></i>
+                    <p class="mb-2">"¡Más recetas que pizzas en Italia!"</p>
+                    <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalRecetas; ?></h1>
                 </div>
-
-                <div class="col-lg-4 col-md-6 ">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5">
-                        <i class="fa fa-solid fa-map fa-4x text-primary mb-4"></i>
-                        <p class="mb-2">Paises totales</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalNacionalidades; ?></h1>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 col-md-6 ">
-                    <div class="fact-item bg-light rounded text-center h-100 p-5">
-                        <i class="fa fa-solid fa-user fa-4x text-primary mb-4"></i>
-                        <p class="mb-2">Recetas de usuarios</p>
-                        <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalUser; ?></h1>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="fact-item text-center h-100 p-5">
+                    <i class="fa fa-solid fa-map fa-4x text-primary mb-4"></i>
+                    <p class="mb-2">"¡Explora el mundo sin salir de tu cocina!"</p>
+                    <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalNacionalidades; ?></h1>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="fact-item text-center h-100 p-5">
+                    <i class="fa fa-solid fa-user fa-4x text-primary mb-4"></i>
+                    <p class="mb-2">"¡Recetas frescas de nuestros usuarios!"</p>
+                    <h1 class="display-5 mb-0" data-toggle="counter-up"><?php echo $totalUser; ?></h1>
+                </div>
+            </div>
+
         </div>
     </div>
+</div>
 
+
+
+
+</div>
     <!-- Facts End -->
 
     <?php include 'recetas.php'; ?>
- 
+
     <div class="container mb-5">
         <div class="row justify-content-around gy-4">
             <div class="features-image col-lg-6 order-1 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                 <img src="assets/img/servicio1.webp" class="w-75" alt="">
             </div>
-            <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2" data-aos="fade-up"
-                data-aos-delay="100">
+            <div class="col-lg-5 d-flex flex-column justify-content-center order-2 order-lg-2" data-aos="fade-up" data-aos-delay="100">
                 <h3>Pon te en contacto con nosotros</h3>
 
+                <?php if (isset($_GET['success']) && $_GET['success'] == 1) : ?>
+                    <div class="alert alert-success" role="alert">Mensaje enviado con éxito.</div>
+                <?php endif; ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        if (window.location.hash) {
+                            alert("Enviado con exito");
+                        }
+                    });
+                </script>
                 <form action="index.php?c=User&a=guardarAviso" method="POST" id="contact-form">
-    
-    <div class="mb-3">
-        <label for="name" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-    </div>
-    <div class="mb-3">
-        <label for="message" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+                    <div id="ancla"></div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+
+
 
             </div>
         </div>
     </div>
 
 
-
-
     <div id="overlay23"></div>
-    <div id="cookieConsent" class="alert alert-warning alert-dismissible fade show position-fixed" role="alert"
-        style="left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div id="cookieConsent" class="alert alert-warning alert-dismissible fade show position-fixed" role="alert" style="left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 9999;">
         <p>Acepta las cookies o si no, siempre que cierres el navegador te saldrá este mensaje</p>
         <button id="acceptCookie" class="btn btn-success btn-sm ml-2">Aceptar cookies básicas</button>
         <button id="rejectCookie" class="btn btn-danger btn-sm ml-2">Rechazar</button>
         <button id="rejectCookie" class="btn btn-primary btn-sm ml-2">Personalizar</button>
-
-
     </div>

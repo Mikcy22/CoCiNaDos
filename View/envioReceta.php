@@ -30,7 +30,7 @@ $array_data = json_decode($json_data, true);
 </div>
 
 
-<form action="index.php?c=Formulario&a=guardarReceta" method="post" enctype="multipart/form-data">
+<form action="index.php?c=Formulario&a=guardarReceta" method="post" id="formRecetas" enctype="multipart/form-data">
     <div class="container">
 
     
@@ -64,14 +64,14 @@ $array_data = json_decode($json_data, true);
             <div class="input-group mb-3">
 
                 <input size="40" class="form-control" placeholder="Nombre de la receta" value="" type="text"
-                    name="name">
+                    name="name" required>
             </div>
         </div>
 
         <h3 class="h3-title title-box title-laranja margin-top-40">Breve descripcion de la receta</h3>
         <div class="d-flex justify-content-center">
             <div class="input-group mb-3">
-                <textarea class="form-control me-3" rows="2" name="description"></textarea>
+                <textarea class="form-control me-3" rows="2" name="description" required></textarea>
 
             </div>
         </div>
@@ -81,7 +81,7 @@ $array_data = json_decode($json_data, true);
         <h3 class="h3-title title-box title-laranja margin-top-40">Tiempo de elaboracion</h3>
         <div class="input-group mb-3">
             <input type="number" class="form-control" placeholder="Minutos" aria-label="Minutos"
-                aria-describedby="basic-addon2" name="time_elaboration">
+                aria-describedby="basic-addon2" name="time_elaboration" required>
             <span class="input-group-text" id="basic-addon2">Minutos</span>
         </div>
         <!-- Fin Tiempo de elaboracion -->
@@ -92,7 +92,7 @@ $array_data = json_decode($json_data, true);
         <h3 class="h3-title title-box title-laranja margin-top-40">Calorias de la receta</h3>
         <div class="input-group mb-3">
             <input type="number" class="form-control" placeholder="Calorías" aria-label="Calorías"
-                aria-describedby="basic-addon3" name="calorias">
+                aria-describedby="basic-addon3" name="calorias" required>
             <span class="input-group-text" id="basic-addon3">Calorías</span>
         </div>
         <!-- Fin Calorias -->
@@ -101,7 +101,7 @@ $array_data = json_decode($json_data, true);
         <h3 class="h3-title title-box title-laranja margin-top-40">Número de personas</h3>
         <div class="input-group mb-3">
             <input type="number" class="form-control" placeholder="Número de personas" aria-label="Número de personas"
-                aria-describedby="basic-addon3" name="num_personas">
+                aria-describedby="basic-addon3" name="num_personas" required>
             <span class="input-group-text" id="basic-addon3">Número de personas</span>
         </div>
         <!-- FIN Número de personas -->
@@ -120,28 +120,7 @@ $array_data = json_decode($json_data, true);
                 <option value="Bebidas">Bebidas</option>
             </select>
         </div>
-        <!-- FIN Tipo de comida -->
-
-        <!-- nacionalidad 
-        <h3 class="h3-title title-box title-laranja margin-top-40">Nacionalidad del plato</h3>
-        <div class="input-group mb-3">
-            <select class="form-select" aria-label="Nacionalidad" name="nacionalidad">
-                <option selected>Asiática</option>
-                <option value="Italiana">Italiana</option>
-                <option value="Mexicana">Mexicana</option>
-                <option value="Española">Española</option>
-                <option value="Marroquí">Marroquí</option>
-                <option value="Francesa">Francesa</option>
-                <option value="China">China</option>
-                <option value="Japonesa">Japonesa</option>
-                <option value="India">India</option>
-                <option value="Otros">Otros</option>
-            </select>
-        </div>
-        FIN  nacionalidad -->
-
-
-
+       
         <h3 class="h3-title title-box title-laranja margin-top-40">Nacionalidad del plato</h3>
         <div class="input-group mb-3">
             <select class="form-select" aria-label="Nacionalidad" name="nacionalidad">
@@ -213,9 +192,9 @@ $array_data = json_decode($json_data, true);
                 <div id="form-container">
                     <div class="form-group d-flex align-items-center mb-2">
                         <input size="40" class="form-control me-3" placeholder="Por ejemplo: 200g" value="" type="text"
-                            name="quantidade[]">
+                            name="quantidade[]" required>
                         <input size="40" class="form-control me-3" placeholder="Por ejemplo, leche condensada" value=""
-                            type="text" name="ingrediente[]">
+                            type="text" name="ingrediente[]" required>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary me-3 addInput">+</button>
@@ -233,7 +212,7 @@ $array_data = json_decode($json_data, true);
                 <div id="pasos-container">
                     <div class="form-group d-flex align-items-center mb-2">
                         <textarea class="form-control me-3" rows="1" placeholder="Por ejemplo, 1. Picar las verduras"
-                            name="pasos[]"></textarea>
+                            name="pasos[]" required></textarea>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary me-3 addInput">+</button>

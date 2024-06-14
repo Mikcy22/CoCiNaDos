@@ -19,24 +19,28 @@ class UserController
     }
 
     public function actionLogin()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $correo_electronico = $_POST['correo_electronico'];
-            $contrasena = $_POST['contrasena'];
-            $user = $this->user->login($correo_electronico, $contrasena);
-            if ($user) {
-                start_session();
-                $_SESSION['username'] = $user['username'];
-                header('Location: index.php?');
-            } else {
-                header('Location: index.php?actionLogin&error=1');
-            }
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $correo_electronico = $_POST['correo_electronico'];
+        $contrasena = $_POST['contrasena'];
+        $user = $this->user->login($correo_electronico, $contrasena);
+        
+        if ($user) {
+            session_start();
+            $_SESSION['username'] = $user['username'];
+            header('Location: index.php');
+            exit(); // Agrega exit() después de la redirección para asegurarte de que el script se detenga
         } else {
-            require_once 'view/header.php';
-            require 'view/formUser.php';
-            require_once 'view/footer.php';
+            header('Location: index.php?c=User&action=Login&error=1');
+            exit(); // Agrega exit() después de la redirección para asegurarte de que el script se detenga
         }
+    } else {
+        require_once 'view/header.php';
+        require 'view/formUser.php';
+        require_once 'view/footer.php';
     }
+}
+
 
     public function logout()
     {
@@ -55,6 +59,14 @@ class UserController
             $correo_electronico = $_POST['correo_electronico'];
             $contrasena = $_POST['contrasena'];
 
+
+            if ($username === "admin") {
+                header("Location: index.php?c=User&a=actionLogin&error=3");
+                return;
+            }
+
+
+
             $registerResult = $this->user->register($username, $nombre, $apellidos, $correo_electronico, $contrasena);
 
             if ($registerResult === "Registro exitoso") {
@@ -66,10 +78,8 @@ class UserController
         } else {
             require 'view/register.php';
         }
+
     }
-
-
-
 
     public function adminPanel()
     {
@@ -86,6 +96,15 @@ class UserController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $this->user->BorrarRecetas($id);
+            header('Location: index.php?c=User&a=adminPanel');
+        }
+    }
+
+    public function BorrarComentario()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $this->user->BorrarComentario($id);
             header('Location: index.php?c=User&a=adminPanel');
         }
     }
@@ -168,29 +187,29 @@ class UserController
 
 
     public function guardarAviso()
-{
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $message = $_POST['message'];
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $message = $_POST['message'];
 
-            // Depuración: mostrar datos recibidos
-            //echo "Datos recibidos: $name, $email, $message";
+                // Depuración: mostrar datos recibidos
+                //echo "Datos recibidos: $name, $email, $message";
 
-            if ($this->user->guardarAviso($name, $email, $message)) {
-                header('Location: index.php?#ancla'); // Redirigir al ancla después de un envío exitoso
-                exit(); // Asegurar que se detiene la ejecución después de la redirección
+                if ($this->user->guardarAviso($name, $email, $message)) {
+                    header('Location: index.php?#ancla'); // Redirigir al ancla después de un envío exitoso
+                    exit(); // Asegurar que se detiene la ejecución después de la redirección
+                } else {
+                    echo "Error al crear el registro.";
+                }
             } else {
-                echo "Error al crear el registro.";
+                echo "Todos los campos son obligatorios.";
             }
         } else {
-            echo "Todos los campos son obligatorios.";
+            echo "Método de solicitud no válido.";
         }
-    } else {
-        echo "Método de solicitud no válido.";
     }
-}
 
 
     public function showAvisos()

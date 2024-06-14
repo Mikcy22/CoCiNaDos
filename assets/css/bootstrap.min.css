@@ -3202,14 +3202,14 @@ fieldset:disabled .btn {
 
 .btn-secondary {
     color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d
+    background-color: #0051ff;
+    border-color: #0044ff
 }
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #5c636a;
-    border-color: #565e64
+    background-color: #001eff;
+    border-color: #006ec3
 }
 
 .btn-check:focus+.btn-secondary,
@@ -7377,7 +7377,7 @@ fieldset:disabled .btn {
 }
 
 .border-primary {
-    border-color: black 
+    border-color: #001eff; 
 }
 
 .border-secondary {
@@ -7397,7 +7397,7 @@ fieldset:disabled .btn {
 }
 
 .border-danger {
-    border-color: #dc3545 
+    border-color: red ;
 }
 
 .border-light {
@@ -8285,7 +8285,7 @@ fieldset:disabled .btn {
 }
 
 .bg-light {
-    background-color: #f8f9fa 
+    background-color: white;
 }
 
 .bg-dark {
@@ -12206,7 +12206,7 @@ a.nav-link.dropdown-toggle {
     font-size: 25px;
 }
 .custom-text {
-    font-size: 25px;
+    font-size: 21px;
 }
  p.card-text {
     font-size: 18px;
@@ -12224,6 +12224,7 @@ a.nav-link.dropdown-toggle {
 }
 .nombreR{
     font-size: 3.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 div#userMenu {
     margin-top: -5px;
@@ -12265,4 +12266,47 @@ p#textoSlider {
     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
     z-index: 9998; /* Un nivel debajo del mensaje de alerta */
    
+}
+#containerAdmin{
+    margin-bottom: 100px !important;
+}
+
+.fact-item {
+    font-family: 'Comic Sans MS', cursive, sans-serif;     
+    background-color: white;
+    color: black;
+}
+.fact-item i {
+    animation: bounce 1s infinite;
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+.fact-item h1 {
+    font-size: 3rem;
+}
+
+
+
+.product-item .img-fluid {
+    width: 500px;
+    /* Ancho fijo de 500px */
+    height: 400px;
+    /* Alto fijo de 400px */
+    object-fit: cover;
+    /* Ajustar la imagen para cubrir el contenedor manteniendo la relación de aspecto */
+}
+
+
+form#formRecetas {
+    margin-bottom: 100px;
+}
+
+#iconoCarne{
+    width: 50px;
 }

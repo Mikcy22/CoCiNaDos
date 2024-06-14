@@ -45,8 +45,7 @@ class User
             return "Error al registrar usuario: " . $errorInfo[2];
         }
     }
-
-
+    
     // Método para verificar si un correo electrónico ya está registrado
     public function emailExists($correo_electronico)
     {
@@ -57,24 +56,17 @@ class User
         return $stmt->fetchColumn() > 0;
     }
 
-
-
-
-
-
     public function login($correo_electronico, $contrasena)
     {
-        $sql = "SELECT user_id,nombre,apellidos,correo_electronico,contrasena,fecha_registro,username FROM usuarios WHERE correo_electronico = :correo_electronico";
+        $sql = "SELECT user_id, nombre, apellidos, correo_electronico, contrasena, fecha_registro, username FROM usuarios WHERE correo_electronico = :correo_electronico";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':correo_electronico', $correo_electronico);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && password_verify($contrasena, $user['contrasena'])) {
-            start_session();
-            $_SESSION['username'] = $user['username'];
-            header('Location: index.php');
+            return $user; // Retornar la información del usuario si la autenticación es exitosa
         }
-        return false;
+        return false; // Retornar false si la autenticación falla
     }
 
     public function TotaAvisos()
@@ -88,8 +80,6 @@ class User
         }
     }
 
-
-
     public function guardarAviso($name, $email, $message)
     {
         $sql = "INSERT INTO contacts (name, email, message) VALUES (:name, :email, :message)";
@@ -97,7 +87,7 @@ class User
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':message', $message);
-    
+
         // Depuración: verificar si la consulta se prepara correctamente
         if ($stmt->execute()) {
             return true;
@@ -108,11 +98,6 @@ class User
             return false;
         }
     }
-    
-
-
-
-
 
     public function getAvisos()
     {
@@ -120,9 +105,6 @@ class User
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
-
-
 
     public function TotaRecetas()
     {
@@ -134,12 +116,6 @@ class User
             die($e->getMessage());
         }
     }
-
-
-
-
-
-
 
     public function BorrarRecetas($id)
     {
@@ -155,6 +131,17 @@ class User
             $stm3 = $this->pdo->prepare("DELETE FROM `cocinados`.`ingredientes` WHERE `receta_id` = :id;");
             $stm3->bindParam(':id', $id);
             $stm3->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function BorrarComentario($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("DELETE FROM contacts WHERE `id` = :id;");
+            $stm->bindParam(':id', $id);
+            $stm->execute();
         } catch (Exception $e) {
             die($e->getMessage());
         }

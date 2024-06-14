@@ -27,7 +27,10 @@
                 $error = "Error con el login, puedes haber introducido mal la contraseña o el correo electrónico.";
             } elseif ($_GET['error'] == 2) {
                 $error = "Error con el registro, esos datos ya están registrados.";
+            }elseif ($_GET['error'] == 3) {
+                $error = "El nombre de usuario 'admin' no está permitido.";
             }
+
         }
 
         if ($error) : ?>
